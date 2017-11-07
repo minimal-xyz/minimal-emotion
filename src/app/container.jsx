@@ -8,6 +8,6 @@ const borderStyle = css`
 
 export default class Container extends React.Component {
   render() {
-    return <div className={borderStyle}>Example 10</div>;
+    return <div className={borderStyle}>Example 12</div>;
   }
 }

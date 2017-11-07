@@ -1,4 +1,6 @@
 {
   "presets": ["env"],
-  "plugins": ["transform-react-jsx"]  
+  "plugins": ["transform-react-jsx",
+      ["emotion", { "extractStatic": true }]
+    ]
 }

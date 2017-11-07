@@ -3,6 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --config webpack.dev.js --hot",
+    "clean-emotion-css": "find src | grep css | xargs -I % rm -v %",
+    "build-webpack": "webpack --config webpack.release.js",
+    "build": "yarn build-webpack && yarn clean-emotion-css",
+    "serve": "http-server dist/"
+  },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

@@ -6,6 +6,21 @@ Working example for Emotion
 
 https://github.com/emotion-js/emotion/blob/master/docs/extract-static.md
 
+### Usage
+
+Dev:
+
+```bash
+yarn dev
+```
+
+Release
+
+```bash
+yarn build
+# yarn serve
+```
+
 ### License
 
 MIT

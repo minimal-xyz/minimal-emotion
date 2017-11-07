@@ -11,12 +11,16 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /(node_modules)/,
-        loader: "babel-loader"
+        loader: "babel-loader",
+        query: {
+          presets: [["env", { modules: false }]],
+          plugins: ["transform-react-jsx"]
+        }
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: [".js", ".jsx"]
   },
   plugins: [new HtmlWebpackPlugin({ template: "template.ejs" })]
 };

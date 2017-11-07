@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import/* webpackMode: "eager" */ Container from './app/container'
+import Container from './app/container'
 
 var render = function() {
   ReactDOM.render(<Container />, document.querySelector(".app"));

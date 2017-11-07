@@ -21,7 +21,11 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /(node_modules)/,
-        loader: "babel-loader"
+        loader: "babel-loader",
+        query: {
+          presets: [["env", { modules: false }]],
+          plugins: ["transform-react-jsx", ["emotion", { extractStatic: true }]]
+        }
       }
     ]
   },

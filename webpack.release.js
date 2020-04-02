@@ -1,9 +1,9 @@
 var webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 
 module.exports = {
+  mode: "production",
   entry: "./src/main",
   output: {
     path: __dirname + "/dist",
@@ -12,25 +12,25 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
+        test: /\.css$/
       },
       {
-        test: /\.jsx$/,
+        test: /\.tsx$/,
         exclude: /(node_modules)/,
-        loader: "babel-loader",
-        query: {
-          presets: [["env", { modules: false }]],
-          plugins: ["transform-react-jsx", ["emotion", { extractStatic: true }]]
-        }
+        loader: "ts-loader"
       }
     ]
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".tsx"]
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        test: /\.js(\?.*)?$/i
+      })
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -39,10 +39,6 @@ module.exports = {
       }
     }),
 
-    new ExtractTextPlugin("[name].css"),
-    new HtmlWebpackPlugin({ template: "template.ejs" }),
-    new UglifyJSPlugin({
-      uglifyOptions: { ie8: false, ecma: 8 }
-    })
+    new HtmlWebpackPlugin({ template: "template.ejs" })
   ]
 };

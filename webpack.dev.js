@@ -9,18 +9,14 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.tsx$/,
         exclude: /(node_modules)/,
-        loader: "babel-loader",
-        query: {
-          presets: [["env", { modules: false }]],
-          plugins: ["transform-react-jsx"]
-        }
+        loader: "ts-loader"
       }
     ]
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".tsx"]
   },
   plugins: [new HtmlWebpackPlugin({ template: "template.ejs" })]
 };
